@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/expenses"
+    android:icon="@drawable/ic_baseline_monetization_on_24"
+    android:title="Expenses"/>
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"/>
+    <item
+        android:id="@+id/income"
+        android:icon="@drawable/ic_baseline_tag_faces_24"
+        android:title="Income"/>
+
+
+</menu>

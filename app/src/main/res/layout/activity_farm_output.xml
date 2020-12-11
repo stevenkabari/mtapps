@@ -22,32 +22,74 @@
         tools:ignore="MissingConstraints">
 
 
-        <Button
-            android:id="@+id/outputEnter"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title_View_Output"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter Output"
+            android:layout_centerHorizontal="true"
+            android:text="Farm Produce"
+            android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.125"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.11" />
+            app:layout_constraintVertical_bias="0.031" />
 
-        <Button
-            android:id="@+id/outputEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:text="Edit Output"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
-            app:layout_constraintStart_toEndOf="@+id/button6"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.11" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/circularRevealGridLayout_output"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="1"
+            android:rowCount="1"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="-16dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView_output"
+                android:layout_width="370dp"
+                android:layout_height="357dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="#FFFEFE"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.758" />
+
+            <Button
+                android:id="@+id/outputEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Produce"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.925"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.142" />
+
+            <Button
+                android:id="@+id/outputEnter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter Produce"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.117"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.142" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnav"
         android:layout_width="match_parent"

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1051567443897",
+    "project_id": "mtapps-a0955",
+    "storage_bucket": "mtapps-a0955.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051567443897:android:0f3da34b3c5b7419d5f068",
+        "android_client_info": {
+          "package_name": "com.example.mtapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051567443897-vtsmkk5ffu56o5eoha9r8umuusksutdl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mtapps",
+            "certificate_hash": "a3bcd8bd77fae20127b1c1d8be32d3bcb864c100"
+          }
+        },
+        {
+          "client_id": "1051567443897-cr3d1o70hdtetr04b3h8v55eo9u1as87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDedEcEAJ6byQbv9OhzZlXNGcMZH_movSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051567443897-cr3d1o70hdtetr04b3h8v55eo9u1as87.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

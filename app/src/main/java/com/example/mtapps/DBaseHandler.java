@@ -2,6 +2,7 @@ package com.example.mtapps;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -85,4 +86,35 @@ public class DBaseHandler extends SQLiteOpenHelper {
         }
         db.close();
     }
+
+        public int getTotal(){
+            String In_Query = " SELECT SUM(total) AS totalIn FROM "+INCOME+";";
+            String Ex_Query = " SELECT SUM(total) AS totalEx FROM "+EXPENSES+";";
+            int result = 0;
+            int In_total = 0;
+            int Ex_total = 0;
+
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            Cursor cursor =  db.rawQuery(In_Query,null);
+
+            if(cursor.moveToFirst()){
+                In_total = (int)cursor.getInt(cursor.getColumnIndex("totalIn"));
+            }
+            cursor.close();
+            Cursor cursor1 =  db.rawQuery(Ex_Query,null);
+
+            if(cursor1.moveToFirst()){
+                Ex_total = (int)cursor.getInt(cursor.getColumnIndex("totalEx"));
+            }
+            cursor1.close();
+            db.close();
+            result = (int) In_total - Ex_total;
+
+            return result;
+        }
+
+        public 
+
+
 }

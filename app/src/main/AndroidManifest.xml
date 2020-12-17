@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mtapps">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +13,10 @@
         <activity android:name=".FarmOutput"></activity>
         <activity android:name=".FarmInput" >
         </activity>
+        <activity android:name=".Forms.InputForm"></activity>
+        <activity android:name=".Forms.OutputForm"></activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:label="MTAPPS HOME">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

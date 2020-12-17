@@ -2,23 +2,28 @@ package com.example.mtapps.Forms;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mtapps.DBaseHandler;
 import com.example.mtapps.FarmOutput;
 import com.example.mtapps.MainActivity;
 import com.example.mtapps.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -74,12 +79,12 @@ public class OutputForm extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-         save.setOnContextClickListener(new View.OnContextClickListener() {
-            @Override
-            public boolean onContextClick(View v) {
+         save.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
                 send();
-                return false;
-            }
+//                 Log.v("ffs","i was clicked ye");
+             }
         });
 
 
@@ -113,16 +118,29 @@ public class OutputForm extends AppCompatActivity {
     private void send() {
         String FieldName=name.getText().toString().trim();
         String FieldDescription=description.getText().toString().trim();
-        String FieldCost=cost.getText().toString().trim();
-        String FieldQuantity=quantity.getText().toString().trim();
+        String FieldDate=date.getText().toString().trim();
+
+        Double FieldCost = Double.parseDouble(cost.getText().toString());
+        Double FieldQuantity = Double.parseDouble(quantity.getText().toString());
+
+        double total = FieldCost*FieldQuantity;
+
+        String cost = String.valueOf(FieldCost);
+        String quantity = String.valueOf(FieldQuantity);
+
+        Log.v("ffs","Did I get here");
+        if (TextUtils.isEmpty(FieldDate)  ) {
+            Toast.makeText(this, "Input all the fields.", Toast.LENGTH_SHORT).show(); }
+        else {
+            DBaseHandler db = new DBaseHandler(OutputForm.this);
+            db.saveIncome(FieldName,FieldDescription,FieldDate,cost,quantity,total);
+
+            Toast.makeText(this, "Farm Income saved", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(OutputForm.this, FarmOutput.class));
+        }
 
 
 
 
-
-
-
-    }
-
-
+}
 }

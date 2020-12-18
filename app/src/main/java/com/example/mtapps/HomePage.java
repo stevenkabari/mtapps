@@ -65,13 +65,13 @@ public class HomePage extends AppCompatActivity {
         int result = db.getTotal();
         TextView status = (TextView) findViewById(R.id.statusView);
         if (result > 0){
-            status.setText("+ ksh "+result);
+            status.setText("+ ksh. "+result);
             status.setTextColor(Color.GREEN);
         } else if(result < 0){
-            status.setText("- ksh "+result);
+            status.setText(" ksh. "+result);
             status.setTextColor(Color.RED);
         } else {
-            status.setText(result);
+            status.setText("ksh. "+result);
             status.setTextColor(Color.BLACK);
         }
 

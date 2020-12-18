@@ -58,27 +58,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.758" >
+                app:layout_constraintVertical_bias="0.758">
 
                 <ListView
                     android:id="@+id/expenseView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:divider="@color/purple_200"
-                    android:dividerHeight="2dp"/>
+                    android:dividerHeight="2dp" />
             </androidx.cardview.widget.CardView>
-
-            <Button
-                android:id="@+id/inputEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit Expenses"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.925"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.142" />
 
             <Button
                 android:id="@+id/inputEnter"
@@ -87,7 +75,7 @@
                 android:text="Enter Expenses"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.084"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.142" />

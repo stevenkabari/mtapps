@@ -23,13 +23,13 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title_View_home"
         android:layout_width="0dp"
-        android:layout_height="24dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.031" />
@@ -42,6 +42,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="#FFFEFE"
         app:cardCornerRadius="8dp"
         app:cardElevation="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,8 +50,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119"
-        app:cardBackgroundColor="#FFFEFE">
+        app:layout_constraintVertical_bias="0.119">
 
         <TextView
             android:id="@+id/statusView"
@@ -62,10 +62,24 @@
             android:textSize="35dp" />
     </androidx.cardview.widget.CardView>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title_View_home_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Farm inputs"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cardView_home"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_home_stats"
+        tools:layout_conversion_absoluteHeight="27dp"
+        tools:layout_conversion_absoluteWidth="108dp"
+        tools:layout_editor_absoluteX="15dp" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_home"
-        android:layout_width="377dp"
-        android:layout_height="158dp"
+        android:layout_width="332dp"
+        android:layout_height="184dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -80,29 +94,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.36">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/title_View_home_in"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Farm inputs"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:layout_conversion_absoluteHeight="27dp"
-            tools:layout_conversion_absoluteWidth="108dp"
-            tools:layout_editor_absoluteX="15dp"
-            tools:layout_editor_absoluteY="108dp" />
 
         <ListView
             android:id="@+id/inputsView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:divider="@color/purple_200"
+            android:dividerHeight="2dp" />
     </androidx.cardview.widget.CardView>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title_View_home_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Farm outputs"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cardView_home_out"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_home"
+        tools:layout_editor_absoluteX="15dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_home_out"
-        android:layout_width="382dp"
+        android:layout_width="332dp"
         android:layout_height="184dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -118,20 +134,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.815">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/title_View_home_out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Farm outputs"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/outputsView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="339dp"
+            android:layout_height="wrap_content"
+            android:divider="@color/purple_200"
+            android:dividerHeight="2dp" />
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

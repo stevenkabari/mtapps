@@ -71,7 +71,7 @@ public class HomePage extends AppCompatActivity {
             status.setText("ksh. "+result);
             status.setTextColor(Color.RED);
         } else {
-            status.setText("ksh. "+result);
+            status.setText("ksh.0");
             status.setTextColor(Color.BLACK);
         }
 

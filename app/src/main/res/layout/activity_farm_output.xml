@@ -47,8 +47,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_output"
-                android:layout_width="370dp"
-                android:layout_height="357dp"
+                android:layout_width="337dp"
+                android:layout_height="334dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
@@ -60,28 +60,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.758" >
+                app:layout_constraintVertical_bias="0.758">
 
                 <ListView
                     android:id="@+id/incomeView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:divider="@color/purple_200"
-                    android:dividerHeight="2dp"
-                    />
+                    android:dividerHeight="2dp" />
             </androidx.cardview.widget.CardView>
-
-            <Button
-                android:id="@+id/outputEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit Produce"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.925"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.142" />
 
             <Button
                 android:id="@+id/outputEnter"
@@ -90,7 +77,7 @@
                 android:text="Enter Produce"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.117"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.142" />

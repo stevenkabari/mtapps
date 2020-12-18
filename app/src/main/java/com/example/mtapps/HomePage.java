@@ -4,17 +4,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HomePage extends AppCompatActivity {
 
@@ -27,6 +33,7 @@ public class HomePage extends AppCompatActivity {
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
 
         ((TextView)findViewById(R.id.title_View_home)).setText("Welcome "+signInAccount.getDisplayName());
+
 
         //Bottom Nav Manenos
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnav);
@@ -53,6 +60,32 @@ public class HomePage extends AppCompatActivity {
                 return false;
             }
         });
+
+        DBaseHandler db = new DBaseHandler(this);
+        int result = db.getTotal();
+        TextView status = (TextView) findViewById(R.id.statusView);
+        if (result > 0){
+            status.setText("+ ksh "+result);
+            status.setTextColor(Color.GREEN);
+        } else if(result < 0){
+            status.setText("- ksh "+result);
+            status.setTextColor(Color.RED);
+        } else {
+            status.setText(result);
+            status.setTextColor(Color.BLACK);
+        }
+
+        DBaseHandler db0 = new DBaseHandler(this);
+        ArrayList<HashMap<String, String>> incomeList = db0.GetIncome();
+        ListView lv = (ListView) findViewById(R.id.outputsView);
+        ListAdapter adapter = new SimpleAdapter(HomePage.this, incomeList, R.layout.list_row,new String[]{"name","description","date","number","cost","total"}, new int[]{R.id.name, R.id.description, R.id.date,R.id.quantity,R.id.unit,R.id.total});
+        lv.setAdapter(adapter);
+
+        DBaseHandler db1 = new DBaseHandler(this);
+        ArrayList<HashMap<String, String>> expenseList = db1.GetExpense();
+        ListView lv1 = (ListView) findViewById(R.id.inputsView);
+        ListAdapter adapter1 = new SimpleAdapter(HomePage.this, expenseList, R.layout.list_row,new String[]{"name","description","date","number","cost","total"}, new int[]{R.id.name, R.id.description, R.id.date,R.id.quantity,R.id.unit,R.id.total});
+        lv1.setAdapter(adapter1);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -5,9 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DBaseHandler extends SQLiteOpenHelper {
     // Database Version
@@ -25,8 +29,9 @@ public class DBaseHandler extends SQLiteOpenHelper {
 
     private final Context context;
 
-    private String CREATE_IN_TABLE = "CREATE TABLE "+ INCOME + "(" + NAME + "TEXT," + DESC + "TEXT, " + DATE +"TEXT," + COST + "TEXT," + NUMBER + "TEXT," + TOTAL + "INTEGER,"+ "TEXT"+")";
-    private String CREATE_EX_TABLE = "CREATE TABLE "+ EXPENSES + "(" + NAME + "TEXT," + DESC + "TEXT, " + DATE +"TEXT," + COST + "TEXT," + NUMBER + "TEXT," + TOTAL + "INTEGER,"+ "TEXT"+")";
+    private String CREATE_IN_TABLE = "CREATE TABLE "+ INCOME + "(" + NAME + " TEXT," + DESC + " TEXT, " + DATE +" TEXT," + COST + " TEXT," + NUMBER + " TEXT," + TOTAL + "  INTEGER,"+ " TEXT"+")";
+
+    private String CREATE_EX_TABLE = "CREATE TABLE "+ EXPENSES + "(" + NAME + " TEXT," + DESC + " TEXT, " + DATE +" TEXT," + COST + " TEXT," + NUMBER + " TEXT," + TOTAL + " INTEGER,"+ " TEXT"+")";
 
     private String DROP_TABLE = "DROP TABLE IF EXISTS " + INCOME ;
     private String DROP_TABLE_B = "DROP TABLE IF EXISTS " + EXPENSES ;
@@ -47,7 +52,7 @@ public class DBaseHandler extends SQLiteOpenHelper {
         db.execSQL(DROP_TABLE_B); onCreate(db);
     }
 
-    public void saveIncome(String name,String description,String date, String cost , String number,double total){
+    public void saveIncome(String name,String description,String date, String cost , String number,String total){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues values=new ContentValues();
         values.put(DBaseHandler.NAME,name);
@@ -58,6 +63,7 @@ public class DBaseHandler extends SQLiteOpenHelper {
         values.put(DBaseHandler.TOTAL,total);
 
         long status=db.insert(INCOME,null,values);
+        Log.v("insertIncome",status + "");
         if(status<=0){
             Toast.makeText(context, "Record saved unsuccessfully", Toast.LENGTH_SHORT).show();
         }
@@ -88,12 +94,16 @@ public class DBaseHandler extends SQLiteOpenHelper {
     }
 
         public int getTotal(){
-            String In_Query = " SELECT SUM(total) AS totalIn FROM "+INCOME+";";
-            String Ex_Query = " SELECT SUM(total) AS totalEx FROM "+EXPENSES+";";
-            int result = 0;
-            int In_total = 0;
-            int Ex_total = 0;
+           int result = 0;
 
+            result = (int) incomeTotal() - expenseTotal();
+
+            return result;
+        }
+
+        private int incomeTotal(){
+            String In_Query = " SELECT SUM(total) AS totalIn FROM "+INCOME+";";
+            int In_total = 0;
             SQLiteDatabase db = this.getWritableDatabase();
 
             Cursor cursor =  db.rawQuery(In_Query,null);
@@ -102,19 +112,62 @@ public class DBaseHandler extends SQLiteOpenHelper {
                 In_total = (int)cursor.getInt(cursor.getColumnIndex("totalIn"));
             }
             cursor.close();
-            Cursor cursor1 =  db.rawQuery(Ex_Query,null);
 
-            if(cursor1.moveToFirst()){
+            return In_total;
+        }
+        private int expenseTotal(){
+            String Ex_Query = " SELECT SUM(total) AS totalEx FROM "+EXPENSES+";";
+            int Ex_total = 0;
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            Cursor cursor =  db.rawQuery(Ex_Query,null);
+
+            if(cursor.moveToFirst()){
                 Ex_total = (int)cursor.getInt(cursor.getColumnIndex("totalEx"));
             }
-            cursor1.close();
-            db.close();
-            result = (int) In_total - Ex_total;
+            cursor.close();
 
-            return result;
+            return Ex_total;
         }
 
-        public 
+    public ArrayList<HashMap<String, String>> GetIncome(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<HashMap<String, String>> incomeList = new ArrayList<>();
+        String query = "SELECT * FROM "+ INCOME;
+        Cursor cursor = db.rawQuery(query,null);
+
+        while (cursor.moveToNext()){
+            HashMap<String,String> income = new HashMap<>();
+            income.put("text",cursor.getString(cursor.getColumnIndex("TEXT")));
+            income.put("name",cursor.getString(cursor.getColumnIndex(NAME)));
+            income.put("date",cursor.getString(cursor.getColumnIndex(DATE)));
+            income.put("description",cursor.getString(cursor.getColumnIndex(DESC)));
+            income.put("number",cursor.getString(cursor.getColumnIndex(NUMBER)));
+            income.put("cost",cursor.getString(cursor.getColumnIndex(COST)));
+            income.put("total",cursor.getString(cursor.getColumnIndex(TOTAL)));
+            incomeList.add(income);
+        }
+        return  incomeList;
+    }
+    public ArrayList<HashMap<String, String>> GetExpense(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<HashMap<String, String>> expenseList = new ArrayList<>();
+        String query = "SELECT * FROM "+ EXPENSES;
+        Cursor cursor = db.rawQuery(query,null);
+
+        while (cursor.moveToNext()){
+            HashMap<String,String> expense = new HashMap<>();
+            expense.put("name",cursor.getString(cursor.getColumnIndex(NAME)));
+            expense.put("date",cursor.getString(cursor.getColumnIndex(DATE)));
+            expense.put("description",cursor.getString(cursor.getColumnIndex(DESC)));
+            expense.put("number",cursor.getString(cursor.getColumnIndex(NUMBER)));
+            expense.put("cost",cursor.getString(cursor.getColumnIndex(COST)));
+            expense.put("total",cursor.getString(cursor.getColumnIndex(TOTAL)));
+            expenseList.add(expense);
+            Log.v("ad","do I even");
+        }
+        return  expenseList;
+    }
 
 
 }

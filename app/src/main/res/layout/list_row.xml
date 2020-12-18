@@ -10,24 +10,91 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="name"
+        android:textSize="17dp"
+        android:layout_marginTop="9dp"
         android:textStyle="bold"
-        android:textSize="17dp" />
+        android:textColor="#343434"/>
+
     <TextView
-        android:id="@+id/designation"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="9dp"
+        android:text="date"
         android:textColor="#343434"
         android:textSize="14dp" />
+
     <TextView
-        android:id="@+id/location"
+        android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/designation"
-        android:layout_alignBottom="@+id/designation"
-        android:layout_alignParentRight="true"
+        android:layout_below="@id/date"
+        android:layout_marginTop="16dp"
+        android:text="description"
         android:textColor="#343434"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginRight="30dp"
+        android:layout_alignBaseline="@+id/description"
+        android:layout_alignBottom="@+id/description"
+        android:layout_toEndOf="@+id/description"
+        android:text="total"
+        android:textColor="#343434"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:textAlignment="gravity"/>
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="125dp"
+        android:text="quantity"
+        android:textColor="#343434"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:gravity="right"
+        android:textAlignment="gravity"
+        />
+
+    <TextView
+        android:id="@+id/at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="57dp"
+        android:layout_marginTop="50dp"
+        android:text=" units at ksh. "
+        android:textColor="#343434"
+        android:textSize="10dp"
+
+       />
+    <TextView
+        android:id="@+id/unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="50dp"
+        android:text="price"
+        android:textColor="#343434"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:textAlignment="gravity"
+        />
 
 </RelativeLayout>

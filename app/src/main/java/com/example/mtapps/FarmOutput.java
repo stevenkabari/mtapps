@@ -10,9 +10,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
 import com.example.mtapps.Forms.OutputForm;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FarmOutput extends AppCompatActivity {
     Button enter;
@@ -55,6 +62,12 @@ public class FarmOutput extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        DBaseHandler db = new DBaseHandler(this);
+        ArrayList<HashMap<String, String>> incomeList = db.GetIncome();
+        ListView lv = (ListView) findViewById(R.id.incomeView);
+        ListAdapter adapter = new SimpleAdapter(FarmOutput.this, incomeList, R.layout.list_row,new String[]{"name","description","date","number","cost","total"}, new int[]{R.id.name, R.id.description, R.id.date,R.id.quantity,R.id.unit,R.id.total});
+        lv.setAdapter(adapter);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

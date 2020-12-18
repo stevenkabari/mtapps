@@ -125,6 +125,7 @@ public class OutputForm extends AppCompatActivity {
 
         double total = FieldCost*FieldQuantity;
 
+        String totals = String.valueOf(total);
         String cost = String.valueOf(FieldCost);
         String quantity = String.valueOf(FieldQuantity);
 
@@ -133,7 +134,7 @@ public class OutputForm extends AppCompatActivity {
             Toast.makeText(this, "Input all the fields.", Toast.LENGTH_SHORT).show(); }
         else {
             DBaseHandler db = new DBaseHandler(OutputForm.this);
-            db.saveIncome(FieldName,FieldDescription,FieldDate,cost,quantity,total);
+            db.saveIncome(FieldName,FieldDescription,FieldDate,cost,quantity,totals);
 
             Toast.makeText(this, "Farm Income saved", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(OutputForm.this, FarmOutput.class));
